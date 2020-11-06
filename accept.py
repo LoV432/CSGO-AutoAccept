@@ -26,7 +26,7 @@ while True:
         check2 = pixelMatchesColor(x1, y1, (93, 203, 98), tolerance=5)
 
         # If match found go to x1,y1 and click
-        if check1 or check1 == True:
+        if check1 or check2 == True:
             
             # Click accept
             click(x1, y1)
