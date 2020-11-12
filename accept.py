@@ -1,20 +1,21 @@
 from time import sleep
 from pyautogui import pixelMatchesColor, click, moveTo, getActiveWindow
 from screeninfo import get_monitors
-import keyboard
+from keyboard import is_pressed, hook_key, wait
+import winsound
 
 def accept(keyboard_event):
-
-    if keyboard.is_pressed("insert") is True:
+    if is_pressed("insert") is True:
         print("Script Active ", end="\r")
-        sleep(0.2)
+        winsound.Beep(400, 100)
         while True:
 
-            if keyboard.is_pressed("insert") is True:
+            if is_pressed("home") is True:
                 print("Script Paused", end="\r")
-                sleep(0.2)
-                break
-
+                winsound.Beep(300, 100)
+                return
+                
+            sleep(1)
             # Get active window
             # (Used try-except becuz it throws error when no window focused)
             try:
@@ -42,6 +43,6 @@ def accept(keyboard_event):
                     # Move mouse out of the way (Not really needed but ¯\_(ツ)_/¯)
                     moveTo(100, 200)
 
-print('Press INSERT key to start or stop\n')
-keyboard.hook_key("insert", accept)
-keyboard.wait()
+print('Press INSERT key to start or hold HOME key to stop\n')
+hook_key("insert", accept)
+wait()
