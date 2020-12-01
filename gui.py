@@ -4,7 +4,7 @@ from pyautogui import pixelMatchesColor, click, moveTo, getActiveWindow
 from screeninfo import get_monitors
 from guiLoop import guiLoop
 import winsound
-x = True
+s = True
 
 #Func used to get position of the pixel and compare pixel colors with given RGB value
 def check_color(c1,c2,c3,x,y):
@@ -19,7 +19,7 @@ def check_color(c1,c2,c3,x,y):
 
 @guiLoop
 def script():
-    while x == True:
+    while s == True:
 
         # Get active window
         # (Used try-except becuz it throws error when no window focused)
@@ -52,22 +52,22 @@ def script():
 
 #Func to start script and change button to stop
 def start():
-    global x
+    global s
     button["text"] = "Stop"
     button["bg"] = "#4caf50"
     button["command"] = stop
     winsound.Beep(400, 100)
-    x = True
+    s = True
     script(screen)
 
 #Func to stop script and change button to start
 def stop():
-    global x
+    global s
     button["text"] = "Start"
     button["bg"] = "#7f0909"
     button["command"] = start
     winsound.Beep(300, 100)
-    x = False
+    s = False
 
 
 # Basic GUI config
