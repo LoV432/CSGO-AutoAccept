@@ -25,7 +25,6 @@ def script():
         # (Used try-except becuz it throws error when no window focused)
         try:
             window = getActiveWindow().title
-            window = "Counter-Strike: Global Offensive"
         except:
             window = "NULL"
 
