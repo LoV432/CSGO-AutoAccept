@@ -4,7 +4,6 @@ from pyautogui import pixelMatchesColor, click, moveTo, getActiveWindow
 from screeninfo import get_monitors
 from guiLoop import guiLoop
 import winsound
-s = True
 
 #Func used to get position of the pixel and compare pixel colors with given RGB value
 def check_color(c1,c2,c3,x,y):
@@ -77,8 +76,7 @@ h = round(get_monitors()[0].height / 100 * 30)
 screen.geometry("500x200+"+ str(w) + "+" + str(h))
 screen.title("CSGO Auto Accept")
 font = font.Font(size=50)
-button = tkin.Button(screen, text="Stop", font=font, width=30, height=10, bg="#4caf50", activebackground='grey', command=stop)
+button = tkin.Button(screen, font=font, width=30, height=10, activebackground='grey')
 button.pack()
-winsound.Beep(400, 100)
-script(screen)
+start()
 screen.mainloop()
